@@ -1,19 +1,24 @@
-package com.mehs.dev.taxitest.core.models;
+package com.mehs.dev.taxitest.data.schemas;
 
-import java.io.Serializable;
+import java.util.List;
 
 import com.mehs.dev.taxitest.core.enums.StatusEnum;
 
-public class Passenger implements Serializable{
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document("passengers")
+public class MongoPassenger {
+
+	@Id
 	private String id;
 	private String firstName;
 	private String lastName;
 	private StatusEnum status;
-	private String user;
+	private MongoUser user;
+	private List<MongoTravel> travels;
 
-
-	public Passenger() {
+	public MongoPassenger() {
 	}
 
 
@@ -49,25 +54,20 @@ public class Passenger implements Serializable{
 		this.status = status;
 	}
 
-	public String getUser() {
+	public MongoUser getUser() {
 		return this.user;
 	}
 
-	public void setUser(String user) {
+	public void setUser(MongoUser user) {
 		this.user = user;
 	}
 
-
-	@Override
-	public String toString() {
-		return "{" +
-			" id='" + getId() + "'" +
-			", firstName='" + getFirstName() + "'" +
-			", lastName='" + getLastName() + "'" +
-			", status='" + getStatus() + "'" +
-			", user='" + getUser() + "'" +
-			"}";
+	public List<MongoTravel> getTravels() {
+		return this.travels;
 	}
 
+	public void setTravels(List<MongoTravel> travels) {
+		this.travels = travels;
+	}
 
 }

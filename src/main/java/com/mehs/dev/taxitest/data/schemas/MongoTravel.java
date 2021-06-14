@@ -1,24 +1,29 @@
-package com.mehs.dev.taxitest.core.models;
+package com.mehs.dev.taxitest.data.schemas;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import com.mehs.dev.taxitest.core.enums.StatusEnum;
 
-public class Travel implements Serializable {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document("travels")
+public class MongoTravel {
+	@Id
 	private String id;
 	private Date createdDate;
-	private String passenger;
-	private String driver;
-	private String startingPoint;
-	private String destination;
+	private MongoPassenger passenger;
+	private MongoDriver driver;
+	private MongoLocation startingPoint;
+	private MongoLocation destination;
 	private Date startingPointDate;
 	private Date destinationDate;
+	@Indexed
 	private StatusEnum status;
-	private String invoice;
+	private MongoInvoice invoice;
 
-	public Travel() {
+	public MongoTravel() {
 	}
 
 	public String getId() {
@@ -37,35 +42,35 @@ public class Travel implements Serializable {
 		this.createdDate = createdDate;
 	}
 
-	public String getPassenger() {
+	public MongoPassenger getPassenger() {
 		return this.passenger;
 	}
 
-	public void setPassenger(String passenger) {
+	public void setPassenger(MongoPassenger passenger) {
 		this.passenger = passenger;
 	}
 
-	public String getDriver() {
+	public MongoDriver getDriver() {
 		return this.driver;
 	}
 
-	public void setDriver(String driver) {
+	public void setDriver(MongoDriver driver) {
 		this.driver = driver;
 	}
 
-	public String getStartingPoint() {
+	public MongoLocation getStartingPoint() {
 		return this.startingPoint;
 	}
 
-	public void setStartingPoint(String startingPoint) {
+	public void setStartingPoint(MongoLocation startingPoint) {
 		this.startingPoint = startingPoint;
 	}
 
-	public String getDestination() {
+	public MongoLocation getDestination() {
 		return this.destination;
 	}
 
-	public void setDestination(String destination) {
+	public void setDestination(MongoLocation destination) {
 		this.destination = destination;
 	}
 
@@ -93,30 +98,12 @@ public class Travel implements Serializable {
 		this.status = status;
 	}
 
-	public String getInvoice() {
+	public MongoInvoice getInvoice() {
 		return this.invoice;
 	}
 
-	public void setInvoice(String invoice) {
+	public void setInvoice(MongoInvoice invoice) {
 		this.invoice = invoice;
 	}
-
-
-	@Override
-	public String toString() {
-		return "{" +
-			" id='" + getId() + "'" +
-			", createdDate='" + getCreatedDate() + "'" +
-			", passenger='" + getPassenger() + "'" +
-			", driver='" + getDriver() + "'" +
-			", startingPoint='" + getStartingPoint() + "'" +
-			", destination='" + getDestination() + "'" +
-			", startingPointDate='" + getStartingPointDate() + "'" +
-			", destinationDate='" + getDestinationDate() + "'" +
-			", status='" + getStatus() + "'" +
-			", invoice='" + getInvoice() + "'" +
-			"}";
-	}
-
 
 }

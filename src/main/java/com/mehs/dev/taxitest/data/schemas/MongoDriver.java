@@ -1,20 +1,24 @@
-package com.mehs.dev.taxitest.core.models;
+package com.mehs.dev.taxitest.data.schemas;
 
-import java.io.Serializable;
 import java.util.List;
 
 import com.mehs.dev.taxitest.core.enums.StatusEnum;
 
-public class Driver implements Serializable {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document("drivers")
+public class MongoDriver {
+	
+	@Id
 	private String id;
 	private String firstName;
 	private String lastName;
-	private List<String> locations;
+	private List<MongoLocation> locations;
 	private StatusEnum status;
 
 
-	public Driver() {
+	public MongoDriver() {
 	}
 
 
@@ -42,11 +46,11 @@ public class Driver implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public List<String> getLocations() {
+	public List<MongoLocation> getLocations() {
 		return this.locations;
 	}
 
-	public void setLocations(List<String> locations) {
+	public void setLocations(List<MongoLocation> locations) {
 		this.locations = locations;
 	}
 
@@ -56,18 +60,6 @@ public class Driver implements Serializable {
 
 	public void setStatus(StatusEnum status) {
 		this.status = status;
-	}
-
-
-	@Override
-	public String toString() {
-		return "{" +
-			" id='" + getId() + "'" +
-			", firstName='" + getFirstName() + "'" +
-			", lastName='" + getLastName() + "'" +
-			", locations='" + getLocations() + "'" +
-			", status='" + getStatus() + "'" +
-			"}";
 	}
 
 }

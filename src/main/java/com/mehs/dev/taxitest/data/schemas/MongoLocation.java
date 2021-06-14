@@ -1,0 +1,58 @@
+package com.mehs.dev.taxitest.data.schemas;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document("locations")
+public class MongoLocation {
+	@Id
+	private String id;
+	private String name;
+	private Integer distance;
+	private MongoDriver driver;
+	private MongoTravel travel;
+
+	public MongoLocation() {
+	}
+
+	public String getId() {
+		return this.id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getDistance() {
+		return this.distance;
+	}
+
+	public void setDistance(Integer distance) {
+		this.distance = distance;
+	}
+
+	public MongoDriver getDriver() {
+		return this.driver;
+	}
+
+	public void setDriver(MongoDriver driver) {
+		this.driver = driver;
+	}
+
+	public MongoTravel getTravel() {
+		return this.travel;
+	}
+
+	public void setTravel(MongoTravel travel) {
+		this.travel = travel;
+	}
+
+}
