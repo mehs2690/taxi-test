@@ -2,7 +2,7 @@
 
 ## TOOLS
 
-This project has written in [VsCode (latest version)](https://code.visualstudio.com/), also, I used the followings 
+This project has written in [VsCode (latest version)](https://code.visualstudio.com/), also, I used the followings
 extensions:
 
 * [Spring Initializr Java Support](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-spring-initializr)
@@ -27,7 +27,7 @@ extensions:
 
 	B. Get all available drivers list => `GET (/api/drivers?status=available)`
 
-	C. Get all available drivers list within 3km ratio => `GET (/api/drivers?status=available&ratio=3km)`
+	C. Get all available drivers list within 3km ratio => `GET (/api/drivers?status=available&ratio=3)`
 
 	D. Get a specific driver through his ID => `GET (/api/drivers/:id)`
 

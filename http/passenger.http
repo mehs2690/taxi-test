@@ -26,18 +26,25 @@ Content-Type: application/json
 
 ###
 
+# @name getLocations
+
+GET http://localhost:8080/api/locations HTTP/1.1
+Content-Type: application/application/json
+
+@firstLocation = {{getLocations.response.body.$.[0].id}}
+@SecondLocation = {{getLocations.response.body.$.[2].id}}
+
+###
+
 # @name putNewRequestTravel
 
 PUT http://localhost:8080/api/passengers/{{firstId}}/travel HTTP/1.1
 Content-Type: application/json
 
 {
-	"startingPoint": "60c7d76e40e39d04c9d5cfe8",
-	"destination": "60c7d76e40e39d04c9d5cfe7"
+	"startingPoint": "{{firstLocation}}",
+	"destination": "{{SecondLocation}}"
 }
-
-// Estos valores son harcodeados, para que la prueba pasa en su ambiente local, hay que sustiuir los valores 
-// de startingPoint y destination
 
 ###
 
@@ -47,8 +54,8 @@ PATCH http://localhost:8080/api/passengers/{{firstId}} HTTP/1.1
 Content-Type: application/json
 
 {
-	"driver": "60c7d563ada0212940fe6968",
-	"travel": "60c7fb778804c5347b22bb02"
+	"driver": "60c8ca026fd5bd78c5a49950",
+	"travel": "60c91229b13c444ee62d7463"
 }
 
 // Estos valores son harcodeados, para que la prueba pasa en su ambiente local, hay que sustiuir los valores 

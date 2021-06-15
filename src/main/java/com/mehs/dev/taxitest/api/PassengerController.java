@@ -8,6 +8,8 @@ import com.mehs.dev.taxitest.api.dtos.DtoSetDriverToTravel;
 import com.mehs.dev.taxitest.core.models.Passenger;
 import com.mehs.dev.taxitest.core.services.PassengerService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PassengerController {
+
+	private static final Logger log = LoggerFactory.getLogger(PassengerController.class);
 
 	@Autowired
 	private PassengerService service;
@@ -47,7 +51,12 @@ public class PassengerController {
 		@PathVariable(required = true) String id,
 		@RequestBody DtoRequestTravel dto
 	) {
-		return this.service.putNewRequestTravel(id, dto);
+		try {
+			return this.service.putNewRequestTravel(id, dto);	
+		} catch (Exception e) {
+			log.info(e.toString());
+			return null;
+		}
 	}
 
 	@PatchMapping("/passengers/{id}")

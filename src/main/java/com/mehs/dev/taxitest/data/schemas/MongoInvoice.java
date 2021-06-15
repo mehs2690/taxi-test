@@ -3,12 +3,16 @@ package com.mehs.dev.taxitest.data.schemas;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document("invoices")
 public class MongoInvoice {
 	@Id
 	private String id;
+	@Field("travel")
+	@DBRef
 	private MongoTravel travel;
 	private Integer amount;
 	private Date createdDate;
@@ -56,6 +60,11 @@ public class MongoInvoice {
 
 	public void setTax(Integer tax) {
 		this.tax = tax;
+	}
+
+	@Override
+	public String toString() {
+		return this.getId();
 	}
 
 }

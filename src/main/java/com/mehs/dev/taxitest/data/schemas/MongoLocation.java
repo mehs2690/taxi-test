@@ -1,7 +1,9 @@
 package com.mehs.dev.taxitest.data.schemas;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document("locations")
 public class MongoLocation {
@@ -9,7 +11,11 @@ public class MongoLocation {
 	private String id;
 	private String name;
 	private Integer distance;
+	@Field("driver")
+	@DBRef
 	private MongoDriver driver;
+	@Field("travel")
+	@DBRef
 	private MongoTravel travel;
 
 	public MongoLocation() {
@@ -53,6 +59,11 @@ public class MongoLocation {
 
 	public void setTravel(MongoTravel travel) {
 		this.travel = travel;
+	}
+
+	@Override
+	public String toString() {
+		return this.getId();
 	}
 
 }

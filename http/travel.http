@@ -1,0 +1,29 @@
+# @name getAllActiveTravels
+
+GET http://localhost:8080/api/travels?status=STARTED HTTP/1.1
+Content-Type: application/json
+
+@firstId = {{getAllActiveTravels.response.body.$.[0].id}}
+
+###
+
+# @name getTravelById
+
+GET http://localhost:8080/api/travels/{{firstId}} HTTP/1.1
+Content-Type: application/json
+
+@consultedTravel = {{getTravelById.response.body.id}}
+
+###
+
+# @name completeTravel
+
+PATCH http://localhost:8080/api/travels/{{consultedTravel}} HTTP/1.1
+Content-Type: application/json
+
+###
+
+# @name getDriversForTravel
+
+GET http://localhost:8080/api/travels/{{consultedTravel}}/drivers HTTP/1.1
+Content-Type: application/json

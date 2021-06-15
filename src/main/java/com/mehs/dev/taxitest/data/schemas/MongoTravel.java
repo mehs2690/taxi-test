@@ -6,21 +6,33 @@ import com.mehs.dev.taxitest.core.enums.StatusEnum;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document("travels")
 public class MongoTravel {
 	@Id
 	private String id;
 	private Date createdDate;
+	@Field("passenger")
+	@DBRef
 	private MongoPassenger passenger;
+	@Field("driver")
+	@DBRef
 	private MongoDriver driver;
+	@Field("startingPoint")
+	@DBRef
 	private MongoLocation startingPoint;
+	@Field("destination")
+	@DBRef
 	private MongoLocation destination;
 	private Date startingPointDate;
 	private Date destinationDate;
 	@Indexed
 	private StatusEnum status;
+	@Field("invoice")
+	@DBRef
 	private MongoInvoice invoice;
 
 	public MongoTravel() {
@@ -104,6 +116,11 @@ public class MongoTravel {
 
 	public void setInvoice(MongoInvoice invoice) {
 		this.invoice = invoice;
+	}
+
+	@Override
+	public String toString() {
+		return this.getId();
 	}
 
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import com.mehs.dev.taxitest.core.enums.StatusEnum;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document("passengers")
 public class MongoPassenger {
@@ -15,7 +17,11 @@ public class MongoPassenger {
 	private String firstName;
 	private String lastName;
 	private StatusEnum status;
+	@Field("user")
+	@DBRef
 	private MongoUser user;
+	@Field("travels")
+	@DBRef
 	private List<MongoTravel> travels;
 
 	public MongoPassenger() {
@@ -68,6 +74,11 @@ public class MongoPassenger {
 
 	public void setTravels(List<MongoTravel> travels) {
 		this.travels = travels;
+	}
+
+	@Override
+	public String toString(){
+		return this.getId();
 	}
 
 }

@@ -1,0 +1,30 @@
+@baseURI = http://localhost:8080/api/drivers
+
+# @name getAllDrivers
+
+GET {{baseURI}} HTTP/1.1
+Content-Type: application/json
+
+###
+
+# @name getAllActiveDrivers
+
+GET {{baseURI}}?status=ACTIVE HTTP/1.1
+Content-Type: application/json
+
+###
+
+# @name getAllActiveDriverWithinRatio
+
+GET {{baseURI}}?status=Active&ratio=3 HTTP/1.1
+Content-Type: application/json
+
+###
+
+# @name getDriverById
+
+@firstId = {{getAllActiveDrivers.response.body.$.[0].id}}
+
+GET {{baseURI}}/{{firstId}} HTTP/1.1
+
+###
