@@ -1,5 +1,24 @@
 # WEB APPLICATION - TAXI TEST
 
+## TOOLS
+
+This project has written in [VsCode (latest version)](https://code.visualstudio.com/), also, I used the followings 
+extensions:
+
+* [Spring Initializr Java Support](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-spring-initializr)
+
+* [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+
+* Java JDK version 11
+
+![java version](./java-version.png)
+
+* Maven version  3.6.3
+
+![maven version](maven-version.png)
+
+* [REST Client for VsCode](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+
 ## REQUIREMENTS
 
 1. Drivers
@@ -57,6 +76,11 @@
 ```bash
 [~]$ ./mvnw package
 ```
+
+## Using Rest Client
+
+Rest Client is a visual studio code extension allow us to do REST request within the visual studio code editor. In the folder
+`./http` there are `.http` files where you can test the REST endpoints of this project
 
 ## EER Diagram
 

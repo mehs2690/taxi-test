@@ -6,5 +6,6 @@ public enum StatusEnum {
 	ACTIVE,
 	INACTIVE,
 	STARTED,
-	FINISHED
+	FINISHED,
+	INPROGRESS
 }
