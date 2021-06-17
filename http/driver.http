@@ -16,7 +16,7 @@ Content-Type: application/json
 
 # @name getAllActiveDriverWithinRatio
 
-GET {{baseURI}}?status=Active&ratio=3 HTTP/1.1
+GET {{baseURI}}?status=ACTIVE&ratio=3 HTTP/1.1
 Content-Type: application/json
 
 ###
